@@ -109,7 +109,7 @@ fun OnBoardingScreen(navController: NavController){
                                     pagerState.currentPage+1
                                 )
                             }else{
-                              navController.navigate(Routes.Home){
+                              navController.navigate(Routes.Auth){
                                   popUpTo(0)
                               }
                             }
