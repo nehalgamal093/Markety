@@ -13,17 +13,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.markety.features.auth.presentation.components.AuthBottomSheet
 import com.example.markety.features.auth.presentation.components.AuthButton
 import com.example.markety.features.auth.presentation.components.AuthTextField
 import com.example.markety.features.auth.presentation.components.GoogleAuthButton
 import com.example.markety.ui.theme.Grey
 import com.example.markety.ui.theme.Pink100
-@Preview(showBackground = true)
+
 @Composable
-fun LoginTab() {
+fun RegisterTab(){
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         AuthTextField("Email","Type your email")
         Spacer(Modifier.height(5.dp))
@@ -39,12 +38,10 @@ fun LoginTab() {
         }
 
         Spacer(Modifier.height(50.dp))
-        AuthButton("Login", onClick = {})
+        AuthBottomSheet()
         Spacer(Modifier.height(15.dp))
         HorizontalDivider(color = Grey, thickness = 1.dp, modifier = Modifier.width(80.dp))
         Spacer(Modifier.height(15.dp))
         GoogleAuthButton()
-
     }
 }
-

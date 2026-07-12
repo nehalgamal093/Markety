@@ -13,7 +13,7 @@ import com.example.markety.features.onboarding.presentation.OnBoardingScreen
 fun AppNavigation(){
     val navController = rememberNavController();
 
-    NavHost(navController=navController,startDestination = Routes.OnBoarding){
+    NavHost(navController=navController,startDestination = Routes.Auth){
     composable(Routes.OnBoarding) {
         OnBoardingScreen(navController = navController)
     }
