@@ -23,9 +23,7 @@ fun AppNavigation(){
         composable(Routes.Main) {
             MainScreen(navController = navController)
         }
-        composable(Routes.Home) {
-            HomeScreen(navController = navController)
-        }
+
         composable (Routes.Auth){
             AuthScreen(navController = navController)
         }

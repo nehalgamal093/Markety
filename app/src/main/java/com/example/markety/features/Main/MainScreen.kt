@@ -1,32 +1,29 @@
 package com.example.markety.features.Main
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.material3.LocalRippleConfiguration
 import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import com.example.markety.R
+import com.example.markety.features.Home.presentation.HomeScreen
+import com.example.markety.features.Main.components.ItemNavBar
 import com.example.markety.ui.theme.Black
 import com.example.markety.ui.theme.Pink10
 import com.example.markety.ui.theme.Pink100
-import com.example.markety.ui.theme.Pink5
 import com.example.markety.ui.theme.White
 
 @Composable
@@ -39,70 +36,47 @@ fun MainScreen(navController: NavController) {
     Scaffold(
         containerColor = White,
         bottomBar = {
-            NavigationBar(containerColor = White) {
+            CompositionLocalProvider(LocalRippleConfiguration provides null) {
+                NavigationBar(containerColor = White) {
 
-                items.forEachIndexed { index, item ->
-                    NavigationBarItem(
-                        selected = selectedItem == index,
-                        colors =  NavigationBarItemDefaults.colors(
+                    items.forEachIndexed { index, item ->
+                        NavigationBarItem(
 
-                            selectedIconColor = Pink100,
+                            selected = selectedItem == index,
+                            colors =  NavigationBarItemDefaults.colors(
 
-                            unselectedIconColor = Pink10,
+                                selectedIconColor = Pink100,
 
-                            selectedTextColor = Black,
+                                unselectedIconColor = Pink10,
 
-                            indicatorColor = Pink5
-                        ),
-                        alwaysShowLabel = false,
-                        onClick = {
-                            selectedItem = index
-                        },
-                        icon = {
-                            when (index) {
-                                0 -> Row(verticalAlignment = Alignment.CenterVertically) {
-                                    Icon(
-                                        painter = painterResource(id = R.drawable.home),
-                                        contentDescription = "Home"
-                                    )
+                                selectedTextColor = Black,
 
-                                    if(selectedItem==index){
-                                        Spacer(modifier = Modifier.width(10.dp))
-                                        Text(text =  "Home",style = MaterialTheme.typography.titleSmall.copy(color = Black))
-                                    }
-                                }
+                                indicatorColor = Color.Transparent
+                            ),
+                            alwaysShowLabel = false,
+                            onClick = {
+                                selectedItem = index
+                            },
+                            icon = {
+                                when (index) {
+                                    0 -> ItemNavBar(selectedItem==index,"Home",R.drawable.home)
 
-                                1 -> Row(verticalAlignment = Alignment.CenterVertically) {
-                                    Icon(
-                                        painter = painterResource(id = R.drawable.profile),
-                                        contentDescription = "Profile"
-                                    )
-                                    if(selectedItem==index){
-                                        Text(text =  "Profile")
-                                    }
+                                    1 -> ItemNavBar(selectedItem==index,"Profile",R.drawable.profile)
 
+
+                                    2 -> ItemNavBar(selectedItem==index,"Cart", R.drawable.cart)
 
                                 }
+                            },
+                            label = {
 
-                                2 -> Row(verticalAlignment = Alignment.CenterVertically) {
-                                    Icon(
-                                        painter = painterResource(id = R.drawable.cart),
-                                        contentDescription = "Cart"
-                                    )
-                                    if(selectedItem == index){
-                                        Text("Cart")
-                                    }
-
-                                }
                             }
-                        },
-                        label = {
 
-                        }
-
-                    )
+                        )
+                    }
                 }
             }
+
         }
     ) { paddingValues ->
         Box(
@@ -114,7 +88,7 @@ fun MainScreen(navController: NavController) {
 
             when (selectedItem) {
 
-                0 -> Text("Home Screen")
+                0 -> HomeScreen()
 
                 1 -> Text("Search Screen")
 
