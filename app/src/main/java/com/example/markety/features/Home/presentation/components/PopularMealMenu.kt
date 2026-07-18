@@ -28,28 +28,56 @@ import com.example.markety.ui.theme.Pink100
 import com.example.markety.ui.theme.White
 
 @Composable
-fun PopularMealMenu(){
-    Column(modifier = Modifier
-        .fillMaxWidth()) {
-        Text(text = "Popular Meal Menu",style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black))
+fun PopularMealMenu() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+    ) {
+        Text(
+            text = "Popular Meal Menu",
+            style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black)
+        )
 
-        Card(modifier = Modifier.padding(10.dp).shadow(
-            elevation = 4.dp,
-            shape = RoundedCornerShape(16.dp),
-            clip = false
-        ).fillMaxWidth(),colors = CardDefaults.cardColors(
-            containerColor = White
-        ),) {
-            Row(modifier = Modifier
-                .fillMaxWidth().padding(10.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+        Card(
+            modifier = Modifier
+                .padding(10.dp)
+                .shadow(
+                    elevation = 4.dp,
+                    shape = RoundedCornerShape(16.dp),
+                    clip = false
+                )
+                .fillMaxWidth(),
+            colors = CardDefaults.cardColors(
+                containerColor = White
+            ),
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 Image(painter = painterResource(R.drawable.pizza2), contentDescription = "Pizza2")
                 Spacer(modifier = Modifier.width(10.dp))
                 Column() {
-                    Text(text = "Pepper Pizza", style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black))
-                    Text(text = "5kg box of Pizza", style = MaterialTheme.typography.labelMedium.copy(color = Grey10))
+                    Text(
+                        text = "Pepper Pizza",
+                        style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black)
+                    )
+                    Text(
+                        text = "5kg box of Pizza",
+                        style = MaterialTheme.typography.labelMedium.copy(color = Grey10)
+                    )
                 }
                 Spacer(modifier = Modifier.width(100.dp))
-                   Text(text = "\$15", style = MaterialTheme.typography.bodyLarge.copy(color = Pink100, fontSize = 20.sp))
+                Text(
+                    text = "\$15",
+                    style = MaterialTheme.typography.bodyLarge.copy(
+                        color = Pink100,
+                        fontSize = 20.sp
+                    )
+                )
 
             }
         }

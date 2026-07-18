@@ -5,4 +5,5 @@ object  Routes {
     const val Main = "main"
     const val Home = "home"
     const val Auth = "auth"
+    const val ProductDetails = "product-details"
 }

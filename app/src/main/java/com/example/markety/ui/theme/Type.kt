@@ -49,6 +49,14 @@ titleSmall = TextStyle(
         fontSize = 15.sp,
         lineHeight = 16.sp,
         letterSpacing = 0.5.sp
+    ),
+    //
+    labelLarge = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.W700,
+        fontSize = 25.sp,
+        lineHeight = 28.sp,
+        letterSpacing = 0.sp
     )
 )
 

@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.markety.core.constants.Routes
 import com.example.markety.features.Home.presentation.HomeScreen
 import com.example.markety.features.Main.MainScreen
+import com.example.markety.features.ProductDetails.presentation.screens.ProductDetailsScreen
 import com.example.markety.features.auth.presentation.AuthScreen
 import com.example.markety.features.onboarding.presentation.OnBoardingScreen
 
@@ -16,7 +17,7 @@ import com.example.markety.features.onboarding.presentation.OnBoardingScreen
 fun AppNavigation(){
     val navController = rememberNavController();
 
-    NavHost(navController=navController,startDestination = Routes.Main){
+    NavHost(navController=navController,startDestination = Routes.ProductDetails){
     composable(Routes.OnBoarding) {
         OnBoardingScreen(navController = navController)
     }
@@ -26,6 +27,9 @@ fun AppNavigation(){
 
         composable (Routes.Auth){
             AuthScreen(navController = navController)
+        }
+        composable (Routes.ProductDetails){
+            ProductDetailsScreen(navController = navController)
         }
     }
 
