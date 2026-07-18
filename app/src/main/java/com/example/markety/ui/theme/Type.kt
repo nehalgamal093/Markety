@@ -15,7 +15,13 @@ val Typography = Typography(
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
-
+bodySmall = TextStyle(
+    fontFamily = FontFamily.Monospace,
+    fontWeight = FontWeight.W700,
+    fontSize = 13.sp,
+    lineHeight = 20.sp,
+    letterSpacing = 0.sp
+),
 titleSmall = TextStyle(
     fontFamily = FontFamily.Monospace,
     fontWeight = FontWeight.W500,

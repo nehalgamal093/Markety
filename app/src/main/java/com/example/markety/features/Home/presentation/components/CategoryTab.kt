@@ -2,6 +2,7 @@ package com.example.markety.features.Home.presentation.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -13,11 +14,13 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.markety.ui.theme.Black
+import com.example.markety.ui.theme.Orange
 import com.example.markety.ui.theme.Pink100
 import com.example.markety.ui.theme.White
 
@@ -25,7 +28,11 @@ import com.example.markety.ui.theme.White
 fun CategoryTab(image: Int, title: String, isSelected: Boolean,click:()->Unit) {
     Box(
         modifier = Modifier
-            .clip(RoundedCornerShape(16.dp))
+            .clip(RoundedCornerShape(16.dp)).border(
+                width=1.dp,
+                color= Orange,
+                shape = RoundedCornerShape(16.dp)
+            )
 
             .background(
                 if (isSelected)
@@ -37,7 +44,7 @@ fun CategoryTab(image: Int, title: String, isSelected: Boolean,click:()->Unit) {
                 click()
             }
     ) {
-        Row() {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             Image(
                 painter = painterResource(image),
                 contentDescription = title,
