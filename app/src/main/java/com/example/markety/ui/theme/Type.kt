@@ -15,20 +15,20 @@ val Typography = Typography(
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
-bodySmall = TextStyle(
-    fontFamily = FontFamily.Monospace,
-    fontWeight = FontWeight.W700,
-    fontSize = 13.sp,
-    lineHeight = 20.sp,
-    letterSpacing = 0.sp
-),
-titleSmall = TextStyle(
-    fontFamily = FontFamily.Monospace,
-    fontWeight = FontWeight.W500,
-    fontSize = 15.sp,
-    lineHeight = 20.sp,
-    letterSpacing = 0.sp
-),
+    bodySmall = TextStyle(
+        fontFamily = FontFamily.Monospace,
+        fontWeight = FontWeight.W700,
+        fontSize = 13.sp,
+        lineHeight = 20.sp,
+        letterSpacing = 0.sp
+    ),
+    titleSmall = TextStyle(
+        fontFamily = FontFamily.Monospace,
+        fontWeight = FontWeight.W500,
+        fontSize = 15.sp,
+        lineHeight = 20.sp,
+        letterSpacing = 0.sp
+    ),
     titleLarge = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Bold,
@@ -44,7 +44,7 @@ titleSmall = TextStyle(
         letterSpacing = 0.5.sp
     ),
     labelMedium = TextStyle(
-        fontFamily = FontFamily.SansSerif,
+        fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Medium,
         fontSize = 15.sp,
         lineHeight = 16.sp,
@@ -58,12 +58,12 @@ titleSmall = TextStyle(
         lineHeight = 28.sp,
         letterSpacing = 0.sp
     ),
-  bodyMedium = TextStyle(
-      fontFamily = FontFamily.Default,
-      fontWeight = FontWeight.W900,
-      fontSize = 17.sp,
-      lineHeight = 28.sp,
-      letterSpacing = 0.sp
-  )
+    bodyMedium = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.W900,
+        fontSize = 17.sp,
+        lineHeight = 28.sp,
+        letterSpacing = 0.sp
+    )
 )
 

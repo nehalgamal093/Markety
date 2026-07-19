@@ -21,6 +21,7 @@ import androidx.navigation.NavController
 import com.example.markety.R
 import com.example.markety.features.Home.presentation.HomeScreen
 import com.example.markety.features.Main.components.ItemNavBar
+import com.example.markety.features.OrderDetails.presentation.screens.OrderDetails
 import com.example.markety.ui.theme.Black
 import com.example.markety.ui.theme.Pink10
 import com.example.markety.ui.theme.Pink100
@@ -92,7 +93,7 @@ fun MainScreen(navController: NavController) {
 
                 1 -> Text("Search Screen")
 
-                2 -> Text("Profile Screen")
+                2 -> OrderDetails()
             }
         }
     }
