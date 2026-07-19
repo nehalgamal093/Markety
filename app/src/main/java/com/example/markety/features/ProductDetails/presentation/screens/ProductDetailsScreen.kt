@@ -1,4 +1,5 @@
 package com.example.markety.features.ProductDetails.presentation.screens
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -24,8 +25,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.markety.R
+import com.example.markety.features.ProductDetails.presentation.components.AddToCart
 import com.example.markety.features.ProductDetails.presentation.components.TopBar
+import com.example.markety.ui.theme.Grey10
 import com.example.markety.ui.theme.Grey5
+import com.example.markety.ui.theme.Pink100
 import com.example.markety.ui.theme.Pink5
 
 
@@ -33,27 +37,42 @@ import com.example.markety.ui.theme.Pink5
 fun ProductDetailsScreen(navController: NavController) {
 
 
-Column(modifier = Modifier.fillMaxSize()) {
-    Box(modifier = Modifier.fillMaxWidth().fillMaxHeight(.5f)) {
-        Image(
-            painter = painterResource(R.drawable.productdetails),
-            contentDescription = "Product Details",
-            modifier = Modifier.fillMaxSize()
-        )
-        Column(verticalArrangement = Arrangement.Center, modifier = Modifier.padding(16.dp)) {
-            Spacer(modifier = Modifier.height(40.dp))
-            TopBar()
-        }
+    Column() {
+        Box() {
+            Image(
+                painter = painterResource(R.drawable.productdetails),
+                contentDescription = "Product Details",
+            )
+            Column(verticalArrangement = Arrangement.Center, modifier = Modifier.padding(16.dp)) {
+                Spacer(modifier = Modifier.height(40.dp))
+                TopBar()
+            }
 
-    }
-    Box(modifier = Modifier.padding(16.dp)) {
-        Column() {
-            ToolsBar()
-            Text(text = "Chicken Burger\n" +
-                    "Promo Pack", style = MaterialTheme.typography.labelLarge)
+        }
+        Box(
+            modifier = Modifier
+                .padding(16.dp)
+        ) {
+            Column() {
+                ToolsBar()
+                Text(
+                    text = "Chicken Burger\n" +
+                            "Promo Pack", style = MaterialTheme.typography.labelLarge
+                )
+                Spacer(modifier = Modifier.height(30.dp))
+                Row() {
+                    Rating()
+                    Spacer(modifier = Modifier.width(30.dp))
+                    ShoppingBag()
+
+                }
+                Spacer(modifier = Modifier.height(30.dp))
+                Text(text = "In a medium bowl, add ground chicken, breadcrumbs, mayonnaise, onions, parsley, garlic, paprika, salt and pepper. Use your hands to combine all the ingredients together until blended, but don't over mix.", style = MaterialTheme.typography.labelMedium)
+                Spacer(modifier = Modifier.height(30.dp))
+                AddToCart {  }
+            }
         }
     }
-}
 }
 
 @Composable
@@ -61,15 +80,14 @@ fun ToolsBar() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(100.dp)
+            .height(60.dp)
     ) {
         Box(
             modifier = Modifier
-                .clip(RoundedCornerShape(8.dp))
-                .background(color = Pink5)
+                .clip(RoundedCornerShape(8.dp)).background(color = Pink5)
                 .padding(horizontal = 16.dp, vertical = 10.dp)
         ) {
-            Text(text = "Popular")
+            Text(text = "Popular",style = MaterialTheme.typography.labelMedium.copy(color = Pink100))
         }
         Spacer(modifier = Modifier.width(200.dp))
         Box(
@@ -93,5 +111,23 @@ fun ToolsBar() {
         ) {
             Image(painter = painterResource(R.drawable.heart), contentDescription = "Location")
         }
+    }
+}
+
+@Composable
+fun Rating() {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Image(painter = painterResource(id = R.drawable.star2), contentDescription = "star")
+        Spacer(modifier = Modifier.width(5.dp))
+        Text(text = "4.8", style = MaterialTheme.typography.bodyMedium.copy(color = Grey10))
+    }
+}
+
+@Composable
+fun ShoppingBag() {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Image(painter = painterResource(id = R.drawable.shoppingbag), contentDescription = "shopping-bag")
+        Spacer(modifier = Modifier.width(5.dp))
+        Text(text = "7000+ Order", style = MaterialTheme.typography.bodyMedium.copy(color = Grey10))
     }
 }

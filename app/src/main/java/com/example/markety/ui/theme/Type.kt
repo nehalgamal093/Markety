@@ -57,6 +57,13 @@ titleSmall = TextStyle(
         fontSize = 25.sp,
         lineHeight = 28.sp,
         letterSpacing = 0.sp
-    )
+    ),
+  bodyMedium = TextStyle(
+      fontFamily = FontFamily.Default,
+      fontWeight = FontWeight.W900,
+      fontSize = 17.sp,
+      lineHeight = 28.sp,
+      letterSpacing = 0.sp
+  )
 )
 
