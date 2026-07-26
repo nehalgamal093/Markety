@@ -6,4 +6,6 @@ object  Routes {
     const val Home = "home"
     const val Auth = "auth"
     const val ProductDetails = "product-details"
+
+    const val OrderSuccess = "order_success"
 }
