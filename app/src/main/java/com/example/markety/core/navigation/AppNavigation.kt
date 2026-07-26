@@ -12,13 +12,14 @@ import com.example.markety.features.ProductDetails.presentation.screens.ProductD
 import com.example.markety.features.auth.presentation.AuthScreen
 import com.example.markety.features.onboarding.presentation.OnBoardingScreen
 import com.example.markety.features.ordersuccess.presentation.screens.OrderSuccessScreen
+import com.example.markety.features.profile.presentation.screens.ProfileScreen
 
 
 @Composable
 fun AppNavigation(){
     val navController = rememberNavController();
 
-    NavHost(navController=navController,startDestination = Routes.OrderSuccess){
+    NavHost(navController=navController,startDestination = Routes.Profile){
     composable(Routes.OnBoarding) {
         OnBoardingScreen(navController = navController)
     }
@@ -34,6 +35,9 @@ fun AppNavigation(){
         }
         composable (Routes.OrderSuccess){
             OrderSuccessScreen(navController = navController)
+        }
+        composable (Routes.Profile){
+            ProfileScreen(navController = navController)
         }
     }
 

@@ -8,4 +8,5 @@ object  Routes {
     const val ProductDetails = "product-details"
 
     const val OrderSuccess = "order_success"
+    const val Profile = "profile"
 }

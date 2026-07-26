@@ -1,5 +1,4 @@
 package com.example.markety.features.ordersuccess.presentation.screens
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -22,7 +21,6 @@ import androidx.navigation.NavController
 import com.example.markety.R
 import com.example.markety.features.ordersuccess.presentation.components.FeedBackField
 import com.example.markety.features.ordersuccess.presentation.components.SubmitButton
-import com.example.markety.ui.theme.Grey10
 import com.example.markety.ui.theme.Grey5
 import com.example.markety.ui.theme.Pink100
 
