@@ -21,19 +21,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun AuthTextField(label:String,hint:String){
-    var text by remember {
-        mutableStateOf("")
-    }
-    var passwordVisible by remember{
-        mutableStateOf(false)
-    }
+fun AuthTextField(label:String,hint:String,value:String,onValueChange:(String)->Unit){
+//    var text by remember {
+//        mutableStateOf("")
+//    }
+//    var passwordVisible by remember{
+//        mutableStateOf(false)
+//    }
     Column(modifier = Modifier.fillMaxWidth().padding(end = 16.dp, start = 16.dp, top = 16.dp)) {
         Text(text = label, style = MaterialTheme.typography.titleLarge)
         Spacer(Modifier.height(15.dp))
         OutlinedTextField(
-            value = text,
-            onValueChange = {text = it},
+            value = value,
+            onValueChange = onValueChange,
             modifier = Modifier.fillMaxWidth(),
             label = {
                 Text(text = label)

@@ -53,8 +53,8 @@ fun ProfileScreen(navController: NavController) {
                     Image(
                         painter = painterResource(R.drawable.edit_profile),
                         contentDescription = "edit",
-                                modifier = Modifier
-                                .align(Alignment.BottomEnd)
+                        modifier = Modifier
+                            .align(Alignment.BottomEnd)
                     )
 
                 }

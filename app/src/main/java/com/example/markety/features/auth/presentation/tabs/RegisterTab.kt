@@ -24,9 +24,9 @@ import com.example.markety.ui.theme.Pink100
 @Composable
 fun RegisterTab(){
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        AuthTextField("Email","Type your email")
-        Spacer(Modifier.height(5.dp))
-        AuthTextField("Password","Type your password")
+//        AuthTextField("Email","Type your email")
+//        Spacer(Modifier.height(5.dp))
+//        AuthTextField("Password","Type your password")
         Spacer(Modifier.height(10.dp))
         Box(modifier = Modifier.fillMaxWidth()){
             Text(

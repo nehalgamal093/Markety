@@ -16,30 +16,43 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.markety.features.auth.presentation.components.AuthButton
 import com.example.markety.features.auth.presentation.components.AuthTextField
 import com.example.markety.features.auth.presentation.components.GoogleAuthButton
+import com.example.markety.features.auth.presentation.viewmodel.LoginViewModel
 import com.example.markety.ui.theme.Grey
 import com.example.markety.ui.theme.Pink100
-@Preview(showBackground = true)
+
 @Composable
-fun LoginTab() {
+fun LoginTab(viewModel: LoginViewModel = viewModel()) {
+    val state = viewModel.uiState
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        AuthTextField("Email","Type your email")
+        AuthTextField("Email", "Type your email", state.email, viewModel::updateEmail)
         Spacer(Modifier.height(5.dp))
-        AuthTextField("Password","Type your password")
+        AuthTextField("Password", "Type your password", state.password, viewModel::updatePassword)
         Spacer(Modifier.height(10.dp))
-        Box(modifier = Modifier.fillMaxWidth()){
+        Box(modifier = Modifier.fillMaxWidth()) {
             Text(
 
                 text = "Forgot Password?",
                 style = MaterialTheme.typography.titleSmall.copy(color = Pink100),
-                modifier = Modifier.align(Alignment.BottomEnd).padding(end = 20.dp),
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(end = 20.dp),
             )
         }
 
         Spacer(Modifier.height(50.dp))
-        AuthButton("Login", onClick = {})
+        AuthButton(
+            if (state.isLoading) {
+                "Loading"
+            } else {
+                "Login"
+            }
+            , onClick = {
+                viewModel.login()
+            })
         Spacer(Modifier.height(15.dp))
         HorizontalDivider(color = Grey, thickness = 1.dp, modifier = Modifier.width(80.dp))
         Spacer(Modifier.height(15.dp))
