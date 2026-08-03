@@ -1,56 +1,55 @@
 package com.example.markety.features.auth.presentation.viewmodel
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.markety.features.auth.data.repository.AuthRepository
-import com.example.markety.features.auth.presentation.uistate.LoginUiState
+import com.example.markety.features.auth.presentation.uistate.RegisterUiState
 import kotlinx.coroutines.launch
 
-class LoginViewModel : ViewModel() {
-
+class RegisterViewModel : ViewModel() {
     private val repository = AuthRepository()
+    var uiState by mutableStateOf(RegisterUiState())
+    private set
 
-    var uiState by mutableStateOf(LoginUiState())
-        private set
-
-    fun updateEmail(email: String) {
+    fun updateEmail(email:String){
         uiState = uiState.copy(email = email)
     }
 
-    fun updatePassword(password: String) {
+    fun updatePassword(password:String){
         uiState = uiState.copy(password = password)
     }
 
-    fun login() {
+    fun updateName(name:String){
+        uiState = uiState.copy(name = name)
+    }
+
+    fun updatePhone(phone:String){
+        uiState = uiState.copy(phone = phone)
+    }
+
+    fun register(){
         viewModelScope.launch {
             uiState = uiState.copy(
                 isLoading = true,
                 error = null
             )
-            val result = repository.login(uiState.email, uiState.password)
-            uiState = if (result.isSuccess) {
-                Log.d("Result", result.getOrNull().toString())
+            val result = repository.register(uiState.email,uiState.password,uiState.name,uiState.phone)
+            uiState = if(result.isSuccess){
                 uiState.copy(
-                    isLoading = false,
-                    token = result.getOrNull()?.token,
-                    isLoggedIn = true
-
-
+                    isLoading =  false,
+                    registerSuccess = true
                 )
-            } else {
-                Log.d("Result Error", result.exceptionOrNull()?.message.toString())
+
+            }else{
                 uiState.copy(
                     isLoading = false,
                     error = result.exceptionOrNull()?.message
                 )
             }
-
-
         }
-
     }
+
 }

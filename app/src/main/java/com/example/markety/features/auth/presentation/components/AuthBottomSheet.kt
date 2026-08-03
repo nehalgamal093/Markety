@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.markety.features.auth.presentation.tabs.LoginTab
 import com.example.markety.features.auth.presentation.tabs.RegisterTab
 import com.example.markety.ui.theme.Pink100
@@ -36,7 +37,7 @@ import com.example.markety.ui.theme.White
 @OptIn(ExperimentalMaterial3Api::class)
 
 @Composable
-fun AuthBottomSheet() {
+fun AuthBottomSheet(navController: NavController) {
     var showBottomSheet by remember {
         mutableStateOf(false)
     }
@@ -47,7 +48,7 @@ fun AuthBottomSheet() {
 
     Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
 
-        AuthButton("Sign Up",onClick = {
+        AuthButton("Or Login",onClick = {
             showBottomSheet = true
         })
         if (showBottomSheet) {
@@ -105,9 +106,9 @@ fun AuthBottomSheet() {
                 }
                 when (selectedTab) {
 
-                    0 -> RegisterTab()
+                    0 -> RegisterTab(navController = navController)
 
-                    1 -> LoginTab()
+                    1 -> LoginTab(navController = navController)
 
                 }
             }

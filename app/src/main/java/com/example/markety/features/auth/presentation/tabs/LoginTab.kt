@@ -11,12 +11,15 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import com.example.markety.core.constants.Routes
 import com.example.markety.features.auth.presentation.components.AuthButton
 import com.example.markety.features.auth.presentation.components.AuthTextField
 import com.example.markety.features.auth.presentation.components.GoogleAuthButton
@@ -25,8 +28,17 @@ import com.example.markety.ui.theme.Grey
 import com.example.markety.ui.theme.Pink100
 
 @Composable
-fun LoginTab(viewModel: LoginViewModel = viewModel()) {
+fun LoginTab(viewModel: LoginViewModel = viewModel(),navController: NavController) {
     val state = viewModel.uiState
+    LaunchedEffect(state.isLoggedIn) {
+        if(state.isLoggedIn){
+            navController.navigate(Routes.Main){
+                popUpTo(Routes.Auth){
+                    inclusive = true
+                }
+            }
+        }
+    }
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         AuthTextField("Email", "Type your email", state.email, viewModel::updateEmail)
         Spacer(Modifier.height(5.dp))
@@ -49,8 +61,7 @@ fun LoginTab(viewModel: LoginViewModel = viewModel()) {
                 "Loading"
             } else {
                 "Login"
-            }
-            , onClick = {
+            }, onClick = {
                 viewModel.login()
             })
         Spacer(Modifier.height(15.dp))
