@@ -9,37 +9,30 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.wear.compose.material.CircularProgressIndicator
 
 import com.example.markety.features.Home.data.models.Product
+import com.example.markety.features.Home.presentation.ViewModel.ProductViewModel
 
 @Composable
-fun ProductsList() {
-    val products = listOf<Product>(
-        Product(
-            title = "Chicken burger",
-            rating = 3.8,
-            description = "100 gr chicken + tomato + cheese  Lettuce",
-            image = R.drawable.product1,
-            price = 20.00
-        ),
-        Product(
-            title = "Chicken burger",
-            rating = 3.8,
-            description = "100 gr chicken + tomato + cheese  Lettuce",
-            image = R.drawable.product1,
-            price = 20.00
-        )
+fun ProductsList(viewModel: ProductViewModel = ProductViewModel()) {
+val state = viewModel.uiState
 
-    )
-    LazyVerticalGrid(
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        contentPadding = PaddingValues(horizontal = 8.dp),
-        columns = GridCells.Fixed(2),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
+  if(!state.isLoading)  {
+      LazyVerticalGrid(
+          horizontalArrangement = Arrangement.spacedBy(8.dp),
+          contentPadding = PaddingValues(horizontal = 8.dp),
+          columns = GridCells.Fixed(2),
+          verticalArrangement = Arrangement.spacedBy(12.dp)
 
-    ) {
-        items(items = products) { item ->
-            ProductCard(product = item)
-        }
-    }
+      ) {
+          items(state.products) { item ->
+              ProductCard(product = item)
+          }
+      }
+  }
+    else {
+      CircularProgressIndicator()
+  }
 }

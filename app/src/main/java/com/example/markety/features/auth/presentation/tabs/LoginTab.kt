@@ -28,12 +28,12 @@ import com.example.markety.ui.theme.Grey
 import com.example.markety.ui.theme.Pink100
 
 @Composable
-fun LoginTab(viewModel: LoginViewModel = viewModel(),navController: NavController) {
+fun LoginTab(viewModel: LoginViewModel = viewModel(), navController: NavController) {
     val state = viewModel.uiState
     LaunchedEffect(state.isLoggedIn) {
-        if(state.isLoggedIn){
-            navController.navigate(Routes.Main){
-                popUpTo(Routes.Auth){
+        if (state.isLoggedIn) {
+            navController.navigate(Routes.Main) {
+                popUpTo(Routes.Auth) {
                     inclusive = true
                 }
             }

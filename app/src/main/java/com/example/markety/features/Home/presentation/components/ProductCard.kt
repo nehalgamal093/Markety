@@ -22,14 +22,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.example.markety.R
 import com.example.markety.features.Home.data.models.Product
-import com.example.markety.ui.theme.Grey
 import com.example.markety.ui.theme.Grey10
 import com.example.markety.ui.theme.Pink100
 import com.example.markety.ui.theme.White
@@ -53,7 +51,7 @@ fun ProductCard(product: Product) {
         Column(modifier = Modifier.padding(16.dp)) {
             Rating()
             Spacer(modifier = Modifier.height(10.dp))
-            ProductImage(image = product.image)
+            ProductImage(image = product.images[0].attachmentFile)
             Spacer(modifier = Modifier.height(10.dp))
             Text(
                 product.title,
@@ -92,10 +90,10 @@ fun ProductCard(product: Product) {
 }
 
 @Composable
-fun ProductImage(image: Int) {
+fun ProductImage(image: String) {
     Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth()) {
-        Image(
-            painter = painterResource(id = R.drawable.product1),
+        AsyncImage(
+            model = image,
             contentDescription = "product1",
             alignment = Alignment.Center
 

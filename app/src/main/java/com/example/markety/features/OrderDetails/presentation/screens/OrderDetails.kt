@@ -13,31 +13,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.markety.R
 import com.example.markety.features.Home.data.models.Product
+import com.example.markety.features.Home.presentation.ViewModel.ProductViewModel
 import com.example.markety.features.OrderDetails.presentation.components.CartSheet
 import com.example.markety.features.OrderDetails.presentation.components.ProductCartItem
 
 @Composable
-fun OrderDetails() {
+fun OrderDetails(viewModel: ProductViewModel = ProductViewModel()) {
     Box(modifier = Modifier.padding(16.dp)) {
-        val products = listOf<Product>(
-            Product(
-                title = "Chicken burger",
-                rating = 3.8,
-                description = "100 gr chicken + tomato + cheese  Lettuce",
-                image = R.drawable.menu1,
-                price = 20.00
-            ),
-            Product(
-                title = "Chicken burger",
-                rating = 3.8,
-                description = "100 gr chicken + tomato + cheese  Lettuce",
-                image = R.drawable.menu1,
-                price = 20.00
-            )
-
-        )
 
         Column() {
             Text(text = "Order Details", style = MaterialTheme.typography.labelLarge)
@@ -46,7 +31,7 @@ fun OrderDetails() {
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                items(products) { item ->
+                items(viewModel.uiState.products) { item ->
                     ProductCartItem()
 
                 }
